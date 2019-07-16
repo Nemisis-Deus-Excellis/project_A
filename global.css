@@ -10,7 +10,7 @@ body{
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 20px;
-    overflow: :hidden;
+    overflow: hidden;
     background-color: #6BA5B3;
 }
 
@@ -22,7 +22,7 @@ form{
     margin-left: 200px;
     margin-right: 200px;
     border-radius: 10px;
-    padding: 30px;
+    padding: 100px;
     box-shadow: 0px 0px 10px 0px;
 }
 .form-group label{
