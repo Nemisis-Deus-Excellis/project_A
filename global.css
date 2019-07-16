@@ -28,11 +28,36 @@ form{
 .form-group label{
     color: #999999;
 }
-.submit {background-color: #E67225;}
+.submit {}
+.button {
+  background-color: #E67225;
+  border-radius: 4px;
+  color: white;
+  padding: 8px 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+    
+}
+
+.Submit {
+  background-color: #E67225; 
+  color: #FFFFFF; 
+  border: 2px solid #E67225;
+}
+
+.Submit:hover {
+  background-color: #F87111;
+  color: #FFFFFF;
+}
+
 
 /* Responsive layout - makes the layout fit with fill */
-
-
 /* @media (max-width:950px) {
   .form-container {
     margin-left: 190px;
