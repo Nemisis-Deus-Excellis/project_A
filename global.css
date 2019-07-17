@@ -18,11 +18,12 @@ form{
     background: #ffffff;
 }
 .form-container{
+    
+    margin-left: 25%;
+    width: 50%;
     margin-top: 120px;
-    margin-left: 200px;
-    margin-right: 200px;
     border-radius: 10px;
-    padding: 100px;
+    padding: 40px;
     box-shadow: 0px 0px 10px 0px;
 }
 .form-group label{
@@ -57,18 +58,24 @@ form{
 
 
 /* Responsive layout - makes the layout fit with fill */
-/* @media (max-width:950px) {
+@media (min-width: 1088px) {
   .form-container {
-    margin-left: 190px;
-    margin-right: 190px;
-    border-radius: 10px;
-    padding: 30px;
+      
+      padding: 20px;
+    margin-left: 33%;
+      width: 35%;
+    }
   }
     
-    @media (max-width:850px) {
+    @media (min-width: 320px) and (max-width: 775px) {
   .form-container {
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 10px;
-    padding: 30px;
-  }*/
+      width: 100%;
+      padding: 20px;
+    margin-left: .5%;
+        }
+  }
+
+/* profile */
+.profile {
+    padding: 10px 20px;
+}
