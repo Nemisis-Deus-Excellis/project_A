@@ -7,32 +7,32 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TopicsService {
+public class DemoModelsService {
 
-    private List<Topic> topicList = new ArrayList<>(Arrays.asList(
+    private List<DemoModel> DemoModelList = new ArrayList<>(Arrays.asList(
 
-            new Topic("_spring", "_Spring FrameWork", "_Spring Description", null, null, null, null, null, null, null, null, null, null, null),
-            new Topic("spring", "Spring FrameWork", "Spring Description", null, null, null, null, null, null, null, null, null, null, null),
-            new Topic("java", "Java FrameWork", "Java Description", null, null, null, null, null, null, null, null, null, null, null)
+            new DemoModel("_spring", "_Spring FrameWork", "_Spring Description", null, null, null, null, null, null, null, null, null, null, null),
+            new DemoModel("spring", "Spring FrameWork", "Spring Description", null, null, null, null, null, null, null, null, null, null, null),
+            new DemoModel("java", "Java FrameWork", "Java Description", null, null, null, null, null, null, null, null, null, null, null)
 
     ));
 
-	public Topic read(Long id) {
+	public DemoModel read(Long id) {
 		return null;
 	}
 
-	public Topic find(String id) {
+	public DemoModel find(String id) {
 		return null;
 	}
 
-	public Topic update(Long id, Topic topic) {
+	public DemoModel update(Long id, DemoModel DemoModel) {
 		return null;
 	}
 
 	public void delete(Long id) {
         }
 
-	public Topic create(Topic topic) {
+	public DemoModel create(DemoModel DemoModel) {
 		return null;
 	}
 }

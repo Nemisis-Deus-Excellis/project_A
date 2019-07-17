@@ -18,41 +18,41 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/Topic")
-public class TopicController {
+@RequestMapping("/DemoModel")
+public class DemoModelController {
  
     @Autowired
-    private TopicsService service;
+    private DemoModelsService service;
  
     @GetMapping("/{id}")
-    public Topic read(@PathVariable String id) {
+    public DemoModel read(@PathVariable String id) {
         return service.find(id);
     }
     @PostMapping("/")
-    public ResponseEntity<Topic> create(@RequestBody Topic topic) throws URISyntaxException {
-        Topic createdTopic = service.create(topic);
-        if (createdTopic == null) {
+    public ResponseEntity<DemoModel> create(@RequestBody DemoModel DemoModel) throws URISyntaxException {
+        DemoModel createdDemoModel = service.create(DemoModel);
+        if (createdDemoModel == null) {
         return ResponseEntity.notFound().build();
     } else {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
     .path("/{id}")
-        .buildAndExpand(createdTopic.getId())
+        .buildAndExpand(createdDemoModel.getId())
         .toUri();
         return ResponseEntity.created(uri)
-            .body(createdTopic);
+            .body(createdDemoModel);
         }
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Topic> update(@RequestBody Topic topic, @PathVariable Long id) {
-        Topic updatedTopic = service.update(id, topic);
-        if (updatedTopic == null) {
+    public ResponseEntity<DemoModel> update(@RequestBody DemoModel DemoModel, @PathVariable Long id) {
+        DemoModel updatedDemoModel = service.update(id, DemoModel);
+        if (updatedDemoModel == null) {
             return ResponseEntity.notFound().build();
         } else {
-            return ResponseEntity.ok(updatedTopic);
+            return ResponseEntity.ok(updatedDemoModel);
         }
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteTopic(@PathVariable Long id) {
+    public ResponseEntity<Object> deleteDemoModel(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

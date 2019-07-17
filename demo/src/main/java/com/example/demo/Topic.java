@@ -2,7 +2,7 @@ package com.example.demo;
 
 import java.util.Map;
 
-public class Topic {
+public class DemoModel {
 
     private String dob;
     private String password;
@@ -19,11 +19,11 @@ public class Topic {
     private String highestqualification;
     private String resources;
 
-    public Topic() {
+    public DemoModel() {
 
     }
 
-    public Topic(String dob, String password, String email, String role, String firstname, String contactno, String lastname, String nationality, String school, String highestqualification, String gender, String goal, String resources, String actionplan) {
+    public DemoModel(String dob, String password, String email, String role, String firstname, String contactno, String lastname, String nationality, String school, String highestqualification, String gender, String goal, String resources, String actionplan) {
         this.dob = dob;
         this.password = password;
         this.email = email;
