@@ -5,13 +5,24 @@ body{
 
 .header{
     font-family: arial;
+    overflow: hidden;
+}
+
+.plain{
     color:#FFFFFF;
     margin-top: -25px;
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 20px;
-    overflow: hidden;
     background-color: #6BA5B3;
+}
+.choise{
+    color:#6BA5B3;
+    margin-top: -25px;
+    padding-top: 25px;
+    padding-bottom: 8px;
+    padding-left: 25px;
+    background-color: #FFFFFF;
 }
 
 form{
@@ -19,20 +30,17 @@ form{
 }
 .form-container{
     margin-top: 120px;
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: 25%;
+    width: 50%;
     border-radius: 10px;
-    padding: 100px;
+    padding: 40px;
     box-shadow: 0px 0px 10px 0px;
 }
 .form-group label{
     color: #999999;
+    padding-top: 15px;
 }
 .button {
-  background-color: #E67225;
-  border-radius: 4px;
-  color: white;
-  padding: 8px 64px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -46,6 +54,7 @@ form{
 
 .Submit {
   background-color: #E67225; 
+  padding: 8px 64px;
   color: #FFFFFF; 
   border: 2px solid #E67225;
 }
@@ -53,22 +62,42 @@ form{
 .Submit:hover {
   background-color: #F87111;
   color: #FFFFFF;
+  border: 2px solid #F87111;
+}
+
+/*profile*/
+.profile{
+    padding: 10px 20px;
+}
+
+.Save {
+  background-color: #FF8C03; 
+  padding: 6px 10px;
+  color: #FFFFFF; 
+  border: 2px solid #FF8C03;
+    margin-left: 80%;
+    margin-top: 20%;
+}
+
+.Save:hover {
+  background-color: #F87111;
+  color: #FFFFFF;
+  border: 2px solid #F87111;
+    
 }
 
 
 /* Responsive layout - makes the layout fit with fill */
-/* @media (max-width:950px) {
+    @media (max-width:1088px) {
   .form-container {
-    margin-left: 190px;
-    margin-right: 190px;
-    border-radius: 10px;
-    padding: 30px;
+    margin-left: 33%;
+    padding: 20px;
+    width: 35%;
   }
     
-    @media (max-width:850px) {
+    @media (min-width: 320px) and (max-width: 775px) {
   .form-container {
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 10px;
-    padding: 30px;
-  }*/
+    margin-left: .5%;
+    width: 100%;
+    padding: 20px;
+  }
