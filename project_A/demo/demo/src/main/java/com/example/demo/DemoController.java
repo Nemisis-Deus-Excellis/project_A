@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.boot.json.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -68,11 +69,13 @@ public class DemoController extends RestTemplate
     }
 	
 	@PostMapping("/createuser")
-    public ResponseEntity<String> POSTcreateuser(@RequestParam DemoJSONClass account) throws IOException
+	@ResponseBody
+    public ResponseEntity<String> POSTcreateuser(@RequestBody DemoJSONClass account) throws IOException
+    //public ResponseEntity<String> POSTcreateuser(DemoJSONClass account) throws IOException
     {
-        return getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w?sheet=user-account", String.class);
-        //String body = entity.getBody();
-        //System.out.println(body + "i was edited lmao");
-        //ObjectMapper objectMapper = new ObjectMapper();
+		System.out.println("Email is " + account.email + "\nDOB is " + account.dob + "\nPassword is " + account.password);
+        //return getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w?sheet=user-account", String.class);
+		return new ResponseEntity<String>("good job my g", HttpStatus.OK);
+		//TODO Check for existing account, then reject it if there's an account. Otherwise send it to the database.
     }
 }
