@@ -25,6 +25,9 @@ body{
     background-color: #FFFFFF;
 }
 
+sidebar{
+    height: 25%;
+}
 form{
     background: #ffffff;
 }
@@ -38,8 +41,12 @@ form{
 }
 .form-group label{
     color: #999999;
+}
+
+.labels{
     padding-top: 15px;
 }
+
 .button {
   text-align: center;
   text-decoration: none;
@@ -85,6 +92,7 @@ form{
   border: 2px solid #F87111;
     
 }
+
 
 
 /* Responsive layout - makes the layout fit with fill */
