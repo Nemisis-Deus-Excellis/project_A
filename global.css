@@ -47,10 +47,6 @@ form{
     color: #999999;
 }
 
-.labels{
-    padding-top: 15px;
-}
-
 .button {
   text-align: center;
   text-decoration: none;
@@ -106,10 +102,12 @@ form{
     padding: 20px;
     width: 35%;
   }
+  }
     
     @media (min-width: 320px) and (max-width: 775px) {
   .form-container {
     margin-left: .5%;
     width: 100%;
     padding: 20px;
+  }
   }
