@@ -6,12 +6,38 @@
 
         <link rel="stylesheet" type="text/css" href="css/all.css">
 
-    </head>
-    <body>
+        <div class="header sidebar">
+            <h3 class="w3-bar-item">Menu</h3>
+        </div>
 
         <div class="header choise">
             <p>Profile</p>
         </div>
+
+
+    </head>
+
+    <script>
+        var obj = { 
+            "email": "eejoe.chang@trampolene.org",
+            "first_name": "",
+            "last_name": "",
+            "dob": "",
+            "contact_no": "",
+            "nationality": "",
+            "school": "",
+            "highest_qualification": "",
+            "gender": "",
+            "goal": "",
+            "resources": "",
+            "action_plan"
+        };
+        var myJSON = JSON.stringify(obj);
+    </script>
+
+    <body>
+
+
 
         <section class="container-fluid">
             <section class="row justify-content-center">
@@ -22,73 +48,67 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col labels">
                                         <label for="exampleInputFirstName">First Name</label>
                                         <input type="first name" class="form-control" id="exampleInputFirstName" aria-describedby="FirstNameHelp" placeholder="Enter first name">
                                     </div>
-                                    <div class="col">
+                                    <div class="col labels">
                                         <label for="exampleInputSchool">School</label>
                                         <input type="school" class="form-control" id="exampleInputSchool" aria-describedby="SchoolHelp" placeholder="Enter school">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col">
-                                        <label for="exampleInputFirstName">Last Name</label>
-                                        <input type="first name" class="form-control" id="exampleInputFirstName" aria-describedby="FirstNameHelp" placeholder="Enter last name">
+                                    <div class="col labels">
+                                        <label for="exampleInputLastName">Last Name</label>
+                                        <input type="last name" class="form-control" id="exampleInputLastName" aria-describedby="LastNameHelp" placeholder="Enter last name">
                                     </div>
-                                    <div class="col">
-                                        <label for="exampleInputSchool">Highest Qualification</label>
-                                        <input type="school" class="form-control" id="exampleInputSchool" aria-describedby="SchoolHelp" placeholder="Enter highest qualification">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="exampleInputFirstName">Date of Birth</label>
-                                        <input type="first name" class="form-control" id="exampleInputFirstName" aria-describedby="FirstNameHelp" placeholder="Enter date of birth">
-                                    </div>
-                                    <div class="col">
-                                        <label for="exampleInputSchool">Gender</label>
-                                        <input type="school" class="form-control" id="exampleInputSchool" aria-describedby="SchoolHelp" placeholder="Enter gender">
+                                    <div class="col labels">
+                                        <label for="exampleHighestQualification">Highest Qualification</label>
+                                        <input type="highest qualification" class="form-control" id="exampleHighestQualification" aria-describedby="QualificationHelp" placeholder="Enter highest qualification">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col">
-                                        <label for="exampleInputFirstName">Contact number</label>
-                                        <input type="first name" class="form-control" id="exampleInputFirstName" aria-describedby="FirstNameHelp" placeholder="Enter contact number">
+                                    <div class="col labels">
+                                        <label for="exampleInputDateBirth">Date of Birth</label>
+                                        <input type="date of birth" class="form-control" id="exampleInputDateBirth" aria-describedby="DateBirthHelp" placeholder="Enter date of birth">
                                     </div>
-                                    <div class="col">
-                                        <label for="exampleInputSchool">Contact number</label>
-                                        <input type="school" class="form-control" id="exampleInputSchool" aria-describedby="SchoolHelp" placeholder="Enter contact number">
+                                    <div class="col labels">
+                                        <label for="exampleInputGender">Gender</label>
+                                        <input type="gender" class="form-control" id="exampleInputGender" aria-describedby="GenderHelp" placeholder="Enter gender">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col">
-                                        <label for="exampleInputFirstName">Nationality</label>
-                                        <input type="first name" class="form-control" id="exampleInputFirstName" aria-describedby="FirstNameHelp" placeholder="Enter nationality">
+                                    <div class="col labels">
+                                        <label for="exampleInputContactNumber">Contact number</label>
+                                        <input type="contact number" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter contact number">
                                     </div>
-                                    <div class="col">
-                                        <label for="exampleInputSchool">Email</label>
-                                        <input type="school" class="form-control" id="exampleInputSchool" aria-describedby="SchoolHelp" placeholder="Enter email">
+
+                                    <div class="col labels">
+                                        <label for="exampleInputNationality">Nationality</label>
+                                        <input type="nationality" class="form-control" id="exampleInputNationality" aria-describedby="NationalityHelp" placeholder="Enter nationality">
                                     </div>
+
                                 </div>
+
+
                             </div>
                             <h3>My personal goal</h3>
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col labels">
                                         <label for="exampleInputFirstName">My Goal</label><br>
                                         <textarea rows="4" cols="50" placeholder="Goal"></textarea>
 
                                     </div>
-                                    <div class="col">
+                                    <div class="col labels">
                                         <label for="exampleInputSchool">Resources</label><br>
                                         <textarea rows="4" cols="50" placeholder="Resources"></textarea>
                                     </div>
 
                                 </div>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col labels">
                                         <label for="exampleInputFirstName">My Action Plan</label><br>
                                         <textarea rows="4" cols="50" placeholder="Plan"></textarea> 
                                     </div>
