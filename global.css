@@ -38,7 +38,6 @@ form{
 }
 .form-group label{
     color: #999999;
-    padding-top: 15px;
 }
 .button {
   text-align: center;
@@ -94,10 +93,12 @@ form{
     padding: 20px;
     width: 35%;
   }
+  }
     
     @media (min-width: 320px) and (max-width: 775px) {
   .form-container {
     margin-left: .5%;
     width: 100%;
     padding: 20px;
+  }
   }
