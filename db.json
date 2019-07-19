@@ -1,0 +1,26 @@
+{
+    "AE-3852-I": {
+        "crime": "Everything",
+        "homePlanet": "Earth",
+        "species": "Human",
+        "url": "https://d1a4b8axgemzjj.cloudfront.net/species/rick-sanchez.jpg"
+    },
+    "AM-1178-I": {
+        "crime": "Selling Tainted Human Flesh",
+        "homePlanet": "Arbolez Mentirosos",
+        "species": "Garblovian",
+        "url": "https://d1a4b8axgemzjj.cloudfront.net/species/garblovian.jpg"
+    },
+    "AM-2125-I": {
+        "crime": "Selling Bootleg Human Hair",
+        "homePlanet": "Arbolez Mentirosos",
+        "species": "Laarvian",
+        "url": "https://d1a4b8axgemzjj.cloudfront.net/species/laarvian.jpg"
+    },
+    "AM-2248-I": {
+        "crime": "Lip-Syncing During an Interplanetary Competition",
+        "homePlanet": "Arbolez Mentirosos",
+        "species": "Tumblorkian",
+        "url": "https://d1a4b8axgemzjj.cloudfront.net/species/tumblorkian.jpg"
+    }
+}
