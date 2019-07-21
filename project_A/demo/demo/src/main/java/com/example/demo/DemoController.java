@@ -2,7 +2,9 @@ package com.example.demo;
 
 import org.springframework.boot.json.*;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -80,7 +82,7 @@ public class DemoController extends RestTemplate
 	@ResponseBody
     public ResponseEntity<String> POSTcreateuser(@RequestBody DemoJSONClass account) throws IOException
     {
-		System.out.println("Email is " + account.email + "\nDOB is " + account.dob + "\nPassword is " + account.password);
+		//System.out.println("Email is " + account.email + "\nDOB is " + account.dob + "\nPassword is " + account.password);
 		//DemoJSONClass[] searchResults = getForObject("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?email=" + account.email + "&sheet=user-account", DemoJSONClass[].class);
 		ResponseEntity<String> query = getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?email=" + account.email + "&sheet=user-account", String.class);
         if (query.getStatusCode() != HttpStatus.OK)
@@ -94,6 +96,8 @@ public class DemoController extends RestTemplate
         	//Account already exists lmao
         	return new ResponseEntity<String>("Email is already tied to an existing account.", HttpStatus.UNAUTHORIZED);
         }
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> credentials = new HttpEntity<String>(
         	"{"
         		+ "\"data\" :"
@@ -104,21 +108,17 @@ public class DemoController extends RestTemplate
                 		+ "\"role\": \"Candidate\""
         			+ "}"
         		+ "]"
-        + "}");
-        System.out.println(credentials.getBody());
-        //TODO fix this server error mess lol
-		ResponseEntity<String> boyo = postForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w?sheet=user-account", credentials, String.class);
-    	System.out.println(boyo.getStatusCode().toString() + ": " + boyo.getBody());
-    	return new ResponseEntity<String>("Stick around lol.", HttpStatus.UNAUTHORIZED);
-		//DONE Check for existing account, then reject it if there's an account. Otherwise send it to the database.
+        + "}", header);
+        //System.out.println(credentials.getBody());
+		return postForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w?sheet=user-account", credentials, String.class);
+    	//System.out.println(boyo.getStatusCode().toString() + ": " + boyo.getBody());
     }
 	
 	@PatchMapping("/edituser")
 	@ResponseBody
+	//TODO ask if email can be changed by the end user, since it's kind of the only unique identifier.
     public ResponseEntity<String> PATCHedituser(@RequestBody DemoJSONClass account) throws IOException
     {
-		System.out.println("Email is " + account.email + "\nDOB is " + account.dob + "\nPassword is " + account.password);
-		//DemoJSONClass[] searchResults = getForObject("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?email=" + account.email + "&sheet=user-account", DemoJSONClass[].class);
 		ResponseEntity<String> query = getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?email=" + account.email + "&sheet=user-account", String.class);
         if (query.getStatusCode() != HttpStatus.OK)
         {
@@ -131,6 +131,8 @@ public class DemoController extends RestTemplate
         	//Account already exists lmao
         	return new ResponseEntity<String>("Email is already tied to an existing account.", HttpStatus.UNAUTHORIZED);
         }
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> credentials = new HttpEntity<String>(
         	"{"
         		+ "\"data\" :"
@@ -141,12 +143,17 @@ public class DemoController extends RestTemplate
                 		+ "\"role\": \"Candidate\""
         			+ "}"
         		+ "]"
-        + "}");
-        System.out.println(credentials.getBody());
-        //TODO fix this server error mess lol
+        + "}", header);
 		ResponseEntity<String> boyo = postForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w?sheet=user-account", credentials, String.class);
-    	System.out.println(boyo.getStatusCode().toString() + ": " + boyo.getBody());
     	return new ResponseEntity<String>("Stick around lol.", HttpStatus.UNAUTHORIZED);
-		//DONE Check for existing account, then reject it if there's an account. Otherwise send it to the database.
+    }
+	
+	@DeleteMapping("/deleteuser")
+    public ResponseEntity<String> DELETEdeleteuser(@RequestParam String email) throws IOException
+    {
+		if (getForObject("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?email=" + email + "&sheet=user-account", DemoJSONClass[].class).length < 1)
+			return new ResponseEntity<String>("Account does not exist", HttpStatus.NOT_FOUND);
+        delete("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/email/" + email + "?sheet=user-account", String.class);
+        return new ResponseEntity<String>(HttpStatus.OK);
     }
 }
