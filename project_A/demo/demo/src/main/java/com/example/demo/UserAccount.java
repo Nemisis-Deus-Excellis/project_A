@@ -1,6 +1,9 @@
 package com.example.demo;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-public class DemoJSONClass
+@JsonInclude(Include.NON_NULL)
+public class UserAccount
 {
 	public String email;
     public String password;
