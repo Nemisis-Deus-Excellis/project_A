@@ -171,26 +171,23 @@ public class DemoController extends RestTemplate
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 	
-	@GetMapping("/allprepareforchange")
-	public ResponseEntity<String> GETallprepareforchange()
+	public ResponseEntity<String> GETall(String sheet)
 	{
-		return getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w?sheet=prepare-for-change", String.class);
+		return getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w?sheet=" + sheet, String.class);
 	}
 	
-	@GetMapping("/prepareforchange")
-	public ResponseEntity<String> GETprepareforchange(@RequestParam String title)
+	public ResponseEntity<String> GETspecific(@RequestParam String title, String sheet)
 	{
-		return getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?title=" + title + "&sheet=prepare-for-change", String.class);
+		return getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?title=" + title + "&sheet=" + sheet, String.class);
 	}
 	
-	@PostMapping("/createprepareforchange")
-	public ResponseEntity<String> POSTcreateprepareforchange(@RequestBody PrepareForChange pair)
+	public ResponseEntity<String> POSTnew(@RequestBody Entry entry, String sheet)
 	{
 		//URLs can't have white spaces. Replace them with their ASCII identifier.
-		String title = pair.title;
+		String title = entry.title;
 		title.replace(" ", "%20");
 		//Search for a title-content entry with the given title.
-		ResponseEntity<String> query = getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?title=" + title + "&sheet=prepare-for-change", String.class);
+		ResponseEntity<String> query = getForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?title=" + title + "&sheet=" + sheet, String.class);
 		//Anything other than an OK status code is echoed to frontend. Something's probably wrong, we'll stop here.
         if (query.getStatusCode() != HttpStatus.OK)
         {
@@ -198,10 +195,10 @@ public class DemoController extends RestTemplate
         	return query;
         }
         //If nothing else, map them into an array of PrepareForChange. This array should be empty.
-        PrepareForChange[] searchResults = new PrepareForChange[0];
+        Entry[] searchResults = new Entry[0];
 		try
 		{
-			searchResults = new ObjectMapper().readValue(query.getBody(), PrepareForChange[].class);
+			searchResults = new ObjectMapper().readValue(query.getBody(), Entry[].class);
 		}
 		catch (IOException e)
 		{
@@ -219,12 +216,115 @@ public class DemoController extends RestTemplate
         HttpEntity<String> credentials = new HttpEntity<String>("");
 		try
 		{
-			credentials = new HttpEntity<String>("{\"data\":[" + new ObjectMapper().writeValueAsString(pair) + "]}", header);
+			credentials = new HttpEntity<String>("{\"data\":[" + new ObjectMapper().writeValueAsString(entry) + "]}", header);
 		}
 		catch (JsonProcessingException e)
 		{
 			e.printStackTrace();
 		}
-		return postForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w?sheet=prepare-for-change", credentials, String.class);
+		return postForEntity("https://sheetdb.io/api/v1/x7q7rbu7cdn5w?sheet=" + sheet, credentials, String.class);
+	}
+	
+	public ResponseEntity<String> PUTedit(@RequestBody Entry entry, String sheet)
+	{
+		return new ResponseEntity<String>("Method has not been implemented.", HttpStatus.LOCKED);
+	}
+	
+	public ResponseEntity<String> DELETEentry(@RequestParam String title, String sheet)
+	{
+		if (getForObject("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/search?title=" + title + "&sheet=" + sheet, Entry[].class).length < 1)
+			return new ResponseEntity<String>("Entry does not exist", HttpStatus.NOT_FOUND);
+        delete("https://sheetdb.io/api/v1/x7q7rbu7cdn5w/title/" + title + "?sheet=" + sheet, String.class);
+        return new ResponseEntity<String>(HttpStatus.OK);
+	}
+	
+	@GetMapping("/allprepareforchange")
+	public ResponseEntity<String> GETallprepareforchange()
+	{
+		return GETall("prepare-for-change");
+	}
+	
+	@GetMapping("/prepareforchange")
+	public ResponseEntity<String> GETprepareforchange(@RequestParam String title)
+	{
+		return GETspecific(title, "prepare-for-change");
+	}
+	
+	@PostMapping("/createprepareforchange")
+	public ResponseEntity<String> POSTcreateprepareforchange(@RequestBody Entry entry)
+	{
+		return POSTnew(entry, "prepare-for-change");
+	}
+	
+	@PutMapping("/editprepareforchange")
+	public ResponseEntity<String> PUTeditprepareforchange(@RequestBody Entry entry)
+	{
+		return PUTedit(entry, "prepare-for-change");
+	}
+	
+	@DeleteMapping("/deleteprepareforchange")
+	public ResponseEntity<String> DELETEdeleteprepareforchange(@RequestParam String title)
+	{
+		return DELETEentry(title, "prepare-for-change");
+	}
+	
+	@GetMapping("/allknowyourself")
+	public ResponseEntity<String> GETallknowyourself()
+	{
+		return GETall("know-yourself");
+	}
+	
+	@GetMapping("/knowyourself")
+	public ResponseEntity<String> GETknowyourself(@RequestParam String title)
+	{
+		return GETspecific(title, "know-yourself");
+	}
+	
+	@PostMapping("/createknowyourself")
+	public ResponseEntity<String> POSTcreateknowyourself(@RequestBody Entry entry)
+	{
+		return POSTnew(entry, "know-yourself");
+	}
+	
+	@PutMapping("/editknowyourself")
+	public ResponseEntity<String> PUTeditknowyourself(@RequestBody Entry entry)
+	{
+		return PUTedit(entry, "know-yourself");
+	}
+	
+	@DeleteMapping("/deleteknowyourself")
+	public ResponseEntity<String> DELETEdeleteknowyourself(@RequestParam String title)
+	{
+		return DELETEentry(title, "know-yourself");
+	}
+	
+	@GetMapping("/allexploreopportunities")
+	public ResponseEntity<String> GETallexploreopportunities()
+	{
+		return GETall("explore-opportunities");
+	}
+	
+	@GetMapping("/exploreopportunities")
+	public ResponseEntity<String> GETexploreopportunities(@RequestParam String title)
+	{
+		return GETspecific(title, "explore-opportunities");
+	}
+	
+	@PostMapping("/createexploreopportunities")
+	public ResponseEntity<String> POSTcreateexploreopportunities(@RequestBody Entry entry)
+	{
+		return POSTnew(entry, "explore-opportunities");
+	}
+	
+	@PutMapping("/editexploreopportunities")
+	public ResponseEntity<String> PUTeditexploreopportunities(@RequestBody Entry entry)
+	{
+		return PUTedit(entry, "explore-opportunities");
+	}
+	
+	@DeleteMapping("/deleteexploreopportunities")
+	public ResponseEntity<String> DELETEdeleteexploreopportunities(@RequestParam String title)
+	{
+		return DELETEentry(title, "explore-opportunities");
 	}
 }
