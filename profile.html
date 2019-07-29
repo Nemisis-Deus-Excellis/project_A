@@ -128,3 +128,67 @@
         </script>
     </body>
 </html>
+
+<!-- user-account
+/alluser	
+GET	
+Return all user information	
+N.A		
+
+/user	
+GET	
+Return a specific user's information	
+email		
+Endpoint: /user?email=eejoe.chang@trampolene.org
+
+/createuser	
+POST	
+Create a new user account with role as "Candidate"	
+{
+        "email": "eejoe.chang@trampolene.org",
+        "password": "1234556",
+        "role": "Admin",
+        "first-name": "",
+        "last-name": "",
+        "dob": "",
+        "contact-no": "",
+        "nationality": "",
+        "school": "",
+        "highest-qualification": "",
+        "gender": "",
+        "goal": "",
+        "resources": "",
+        "action-plan": ""
+    }	
+Check for existing email address, email is an unique field	
+Endpoint: /createuser
+Body: {"email": rick123@gmail.com", "password": "dasdasdas"}
+
+/edituser	
+PUT	
+Edit existing information	
+{
+        "email": "eejoe.chang@trampolene.org",
+        "password": "1234556",
+        "role": "Admin",
+        "first-name": "",
+        "last-name": "",
+        "dob": "",
+        "contact-no": "",
+        "nationality": "",
+        "school": "",
+        "highest-qualification": "",
+        "gender": "",
+        "goal": "",
+        "resources": "",
+        "action-plan": ""
+    }		
+Endpoint: /createuser
+Body: {"first-name" : "rick rick", "last-name": "test", "contact-no" : "3123124", "gender" : "male"}
+
+/deleteuser	
+DELETE	
+Delete a existing user	
+email		
+Endpoint: /deleteuser?email=rickrick@gmail.com
+-->
