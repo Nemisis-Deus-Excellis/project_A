@@ -16,6 +16,14 @@ body{
     padding-left: 20px;
     background-color: #6BA5B3;
 }
+.plain.nav{
+  color:#FFFFFF;
+  margin-top: -25px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 20px;
+  background-color: #6BA5B3;
+}
 .choise{
     color:#6BA5B3;
     margin-top: -25px;
@@ -110,4 +118,17 @@ form{
     width: 100%;
     padding: 20px;
   }
+  /*Register*/
   }
+  .form-group.required .control-label:after {
+    content:"*";
+    color:red;
+  }
+  .form-group.required .desc-label:before {
+    content:"*";
+    color:blue;
+  }
+.form-group.required .warning-label:before {
+  content:"*";
+  color:red;
+}
